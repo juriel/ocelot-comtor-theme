@@ -40,56 +40,63 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
 
         String divId = System.currentTimeMillis() + StringUtils.replace(father.getLabel(), " ", "_");
 
-        HtmlSpan span = new HtmlSpan();
-        span.addAttribute("href", "#" + divId);
-        span.addClass("nav-link").addAttribute("data-toggle", "collapse");
-        span.add(getIcon(father.getIcon()));
+        HtmlSpan navLink = new HtmlSpan();
+        navLink.addAttribute("href", "#" + divId);
+        navLink.addClass("nav-link")
+                .addAttribute("data-toggle", "collapse");
+        navLink.add(getIcon(father.getIcon()));
 
-        HtmlB b = new HtmlB();
-        b.addClass("caret");
-        HtmlP p = (HtmlP) new HtmlP().addData(father.getLabel());
-        p.add(b);
-        span.add(p);
+        HtmlB caret = new HtmlB();
+        caret.addClass("caret");
 
-        mainNode.add(span);
+        HtmlP fatherLabel = (HtmlP) new HtmlP().addEscapedText(father.getLabel());
+        fatherLabel.add(caret);
 
-        HtmlDiv div = new HtmlDiv(divId);
-        div.addClass("collapse");
+        navLink.add(fatherLabel);
 
-        div.add(getChildren(father.getMenuItems()));
-        mainNode.add(div);
+        mainNode.add(navLink);
+
+        HtmlDiv collapse = new HtmlDiv(divId);
+        collapse.addClass("collapse");
+        collapse.add(getChildren(father.getMenuItems()));
+        
+        mainNode.add(collapse);
+
         return mainNode;
     }
 
     private HtmlIcon getIcon(String iconClass) {
         HtmlIcon iTag = new HtmlIcon();
         iTag.addClass(iconClass);
+        
         return iTag;
     }
 
     @Override
     public HtmlTag getChildren(List<MenuItem> childs) {
-        HtmlUl ul = new HtmlUl();
-        ul.addClass("nav");
+        HtmlUl nav = new HtmlUl();
+        nav.addClass("nav");
+        
         for (MenuItem child : childs) {
             HtmlLi navItem = new HtmlLi();
             navItem.addClass("nav-item").addClass("menu-item");
             navItem.addAttribute("endpoint", child.getPath());
 
-            HtmlA wrapper = new HtmlA();
-            wrapper.addClass("nav-link");
+            HtmlA navLink = new HtmlA();
+            navLink.addClass("nav-link");
 
-            HtmlSpan initial = new HtmlSpan(child.getLabel().substring(0, 1));
-            initial.addClass("sidebar-mini");
+            HtmlSpan sidebarMini = new HtmlSpan(child.getLabel().substring(0, 1));
+            sidebarMini.addClass("sidebar-mini");
 
-            HtmlSpan label = new HtmlSpan(child.getLabel());
-            label.addClass("sidebar-normal");
+            HtmlSpan sidebarNormal = new HtmlSpan(child.getLabel());
+            sidebarNormal.addClass("sidebar-normal");
 
-            wrapper.add(initial).add(label);
-            navItem.add(wrapper);
-            ul.add(navItem);
+            navLink.add(sidebarMini).add(sidebarNormal);
+            navItem.add(navLink);
+            nav.add(navItem);
         }
-        return ul;
+        
+        return nav;
     }
 
 }
