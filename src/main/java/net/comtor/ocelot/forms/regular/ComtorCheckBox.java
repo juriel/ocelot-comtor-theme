@@ -1,6 +1,9 @@
 package net.comtor.ocelot.forms.regular;
 
+import net.comtor.html.advanced.LabelInputHelpError;
+import net.comtor.ocelot.bootstrap.forms.checkbox.BCheckBox;
 import net.comtor.ocelot.html.HtmlEscapedText;
+import net.comtor.ocelot.html.HtmlObject;
 import net.comtor.ocelot.html.forms.HtmlFormElement;
 import net.comtor.ocelot.html.forms.HtmlLabel;
 import net.comtor.ocelot.html.forms.IHtmlCheckbox;
@@ -9,37 +12,34 @@ import net.comtor.ocelot.html.styles.HtmlDiv;
 import net.comtor.ocelot.html.styles.HtmlSpan;
 
 /**
- * Checkbox del tema Comtor
+ * Checkbox del tema Comtor. Cuenta con diferente diagramación que el Checkbox
+ * de Bootstrap.
  *
  * @author juandiego@comtor.net
  * @since 1.8
  * @version Nov 13, 2019
  */
-public class ComtorCheckBox extends HtmlDiv implements IHtmlCheckbox {
-
-    public static final String FORM_CHECK_CLASS = "form-check";
-    public static final String FORM_CHECK_INPUT_CLASS = "form-check-input";
-    public static final String FORM_CHECK_LABEL_CLASS = "form-check-label";
+public class ComtorCheckBox extends HtmlDiv implements LabelInputHelpError<HtmlCheckBox>, IHtmlCheckbox {
 
     private HtmlLabel label;
     private HtmlCheckBox checkbox;
     private HtmlSpan sign;
 
     public ComtorCheckBox(String labelText, String value, String name, String style, boolean checked) {
-        addClass(FORM_CHECK_CLASS);
+        addClass(BCheckBox.FORM_CHECK_CLASS);
 
         label = new HtmlLabel(name, "");
         label.setStyle(style);
 
         checkbox = new HtmlCheckBox(checked);
-        checkbox.addClass(FORM_CHECK_INPUT_CLASS);
+        checkbox.addClass(BCheckBox.FORM_CHECK_INPUT_CLASS);
         checkbox.setId(name);
         checkbox.setName(name);
         checkbox.setValue(value);
         label.add(checkbox);
 
         sign = new HtmlSpan();
-        sign.addClass("form-check-sign");
+        sign.addClass(BCheckBox.FORM_CHECK_SIGN_CLASS);
         label.add(sign);
 
         label.addEscapedText(labelText);
@@ -48,7 +48,7 @@ public class ComtorCheckBox extends HtmlDiv implements IHtmlCheckbox {
     }
 
     public ComtorCheckBox(String labelText, String value, String name, boolean checked) {
-        this(labelText, value, name, FORM_CHECK_LABEL_CLASS, checked);
+        this(labelText, value, name, BCheckBox.FORM_CHECK_LABEL_CLASS, checked);
     }
 
     public ComtorCheckBox(String labelText, String value, String name) {
@@ -119,6 +119,52 @@ public class ComtorCheckBox extends HtmlDiv implements IHtmlCheckbox {
     @Override
     public String getName() {
         return checkbox.getName();
+    }
+
+    @Override
+    public HtmlCheckBox getInput() {
+        return checkbox;
+    }
+
+    @Override
+    public void setLabel(String label) {
+        this.label.removeAll();
+        this.label.addEscapedText(label);
+    }
+
+    @Override
+    public String getLabel() {
+        HtmlObject labelElement = label.getFirst();
+
+        if ((labelElement != null) && (labelElement instanceof HtmlEscapedText)) {
+            HtmlEscapedText labelText = (HtmlEscapedText) labelElement;
+
+            return labelText.getText();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void setHelp(String label) {
+    }
+
+    @Override
+    public String getHelp() {
+        return null;
+    }
+
+    @Override
+    public void setError(String label) {
+    }
+
+    @Override
+    public String getError() {
+        return null;
+    }
+
+    public HtmlLabel getLabelElement() {
+        return label;
     }
 
 }
