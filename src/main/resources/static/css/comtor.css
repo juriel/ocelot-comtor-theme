@@ -1,17 +1,17 @@
 :root {
     --comtor-blue: #0e56a6;
     --comtor-orange: #ff5a01;
-  }
-  
-  .comtor-login-form-logo {
+}
+
+.comtor-login-form-logo {
     width: 75%;
-  }
-  
-  .comtor-login-form label {
+}
+
+.comtor-login-form label {
     font-weight: bold;
-  }
-  
-  .comtor-login-form .input-group-prepend span {
+}
+
+.comtor-login-form .input-group-prepend span {
     width: 40px !important;
     background-color: var(--comtor-blue);
     color: white;
@@ -21,110 +21,117 @@
     text-align: center;
     line-height: 2.5rem;
     border-radius: 4px 0 0 4px;
-  }
-  
-  .comtor-login-form .input-group-prepend span i {
+}
+
+.comtor-login-form .input-group-prepend span i {
     text-align: center;
-  }
-  
-  .comtor-navbar-icon {
+}
+
+.comtor-navbar-icon {
     font-size: 1.1rem !important;
-  }
-  
-  #content > .card {
+}
+
+#content > .card {
     padding: 0;
-  }
-  
-  .comtor-admin-card .card-header {
+}
+
+.comtor-admin-card .card-header {
     background-color: rgba(0, 0, 0, 0.05) !important;
     margin: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
     padding: 0.5rem 1rem !important;
-  }
-  
-  .card-header-title {
+}
+
+.card-header-title {
     display: inline;
-  }
-  
-  .card-header-elements {
+}
+
+.card-header-elements {
     display: inline-block;
     float: right;
     clear: left;
-  }
-  
-  .card-header-elements button {
+}
+
+.card-header-elements button {
     margin-bottom: 0;
-  }
-  
-  #query_form {
+}
+
+#query_form {
     padding: 0 1rem;
-  }
-  
-  #query_form #filter {
+}
+
+#query_form #filter {
     width: calc(100% - 57px);
-  }
-  
-  #query_form button {
+}
+
+#query_form button {
     margin: 0 !important;
     display: inline-block;
-  }
-  
-  .card-header-title {
+}
+
+.card-header-title {
     display: inline;
-  }
-  
-  .card-header-elements {
+}
+
+.card-header-elements {
     display: inline-block;
     float: right;
     clear: left;
-  }
-  
-  #query_form {
+}
+
+#query_form {
     padding: 0 1rem;
-  }
-  
-  #query_form #filter {
+}
+
+#query_form #filter {
     width: calc(100% - 67px);
     margin-right: 10px;
-  }
-  
-  #query_form button {
+}
+
+#query_form button {
     margin: 0 !important;
-  }
-  
-  #tableResult {
+}
+
+#tableResult {
     padding: 0 15px;
-  }
-  
-  #queryResult table button {
+}
+
+#queryResult table button {
     padding: 4px 8px;
-  }
-    
-  /* COLORES COMTOR */
-  .sidebar .sidebar-wrapper {
+}
+
+/* COLORES COMTOR */
+.sidebar .sidebar-wrapper {
     background-color: rgba(14, 86, 166, 0.7);
-  }
-  
-  #minimizeSidebar {
-      background-color: var(--comtor-blue);
-  }
-  
-  footer {
+}
+
+#minimizeSidebar {
+    background-color: var(--comtor-blue);
+}
+
+footer {
     background-color: var(--comtor-orange) !important;
-  }
-  
-  footer p,
-  footer a {
+}
+
+footer p,
+footer a {
     color: white !important;
-  }
+}
 
-  footer .copyright {
-      float: initial !important;
-      font-weight: bold;
-  }
+footer .copyright {
+    float: initial !important;
+    font-weight: bold;
+}
 
-  table th {
-      color: white !important;
-      text-align: center;
-      font-weight: bolder !important;
-  }
+table th {
+    color: white !important;
+    text-align: center;
+    font-weight: bolder !important;
+}
+
+.report-result {
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+    border: 1px solid #E2E2E3;
+}
