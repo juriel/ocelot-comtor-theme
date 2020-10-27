@@ -135,3 +135,10 @@ table th {
     overflow: auto;
     border: 1px solid #E2E2E3;
 }
+
+.form-check input[type="checkbox"], 
+.form-check-radio input[type="radio"] {
+    opacity: 1;
+    position: absolute;
+    visibility: visible;
+}
