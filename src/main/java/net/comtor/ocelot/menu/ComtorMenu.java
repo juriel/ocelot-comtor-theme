@@ -42,8 +42,7 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
 
         HtmlSpan navLink = new HtmlSpan();
         navLink.addAttribute("href", "#" + divId);
-        navLink.addClass("nav-link")
-                .addAttribute("data-toggle", "collapse");
+        navLink.addClass("nav-link").addAttribute("data-toggle", "collapse");
         navLink.add(getIcon(father.getIcon()));
 
         HtmlB caret = new HtmlB();

@@ -142,3 +142,14 @@ table th {
     position: absolute;
     visibility: visible;
 }
+
+.crud-table tr th:last-child,
+.crud-table tr td:last-child {
+    width: 1%;
+    display: table-cell !important;
+    white-space: nowrap;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
