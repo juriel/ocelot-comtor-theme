@@ -153,3 +153,13 @@ table th {
 .form-group {
     margin-bottom: 0.5rem;
 }
+
+#restoreForm .comtor-title-content img {
+    max-width: 300px;
+    display: block;
+}
+
+#restoreForm .comtor-title-content h2 {
+    display: block;
+    width: 100%;
+}

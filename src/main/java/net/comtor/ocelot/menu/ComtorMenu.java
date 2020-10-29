@@ -26,49 +26,39 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
         HtmlUl rootTag = new HtmlUl();
         rootTag.addClass("nav");
 
-        root.getMenuItems().forEach((father) -> {
-            rootTag.add(getFather(father));
-        });
+        root.getMenuItems().forEach((father) -> rootTag.add(getFather(father)));
 
         add(rootTag);
     }
 
     @Override
-    public HtmlTag getFather(MenuItem father) {
-        HtmlLi mainNode = new HtmlLi();
-        mainNode.addClass("nav-item").addClass("item-father");
+    public HtmlTag getFather(MenuItem parent) {
+        HtmlLi parentItem = new HtmlLi();
+        parentItem.addClass("nav-item").addClass("parent-item");
 
-        String divId = System.currentTimeMillis() + StringUtils.replace(father.getLabel(), " ", "_");
+        String divId = System.currentTimeMillis() + StringUtils.replace(parent.getLabel(), " ", "_");
 
-        HtmlSpan navLink = new HtmlSpan();
-        navLink.addAttribute("href", "#" + divId);
+        HtmlA navLink = new HtmlA().addHref("#" + divId);
         navLink.addClass("nav-link").addAttribute("data-toggle", "collapse");
-        navLink.add(getIcon(father.getIcon()));
+        navLink.add(getIcon(parent.getIcon()));
 
         HtmlB caret = new HtmlB();
         caret.addClass("caret");
 
-        HtmlP fatherLabel = (HtmlP) new HtmlP().addEscapedText(father.getLabel());
-        fatherLabel.add(caret);
+        HtmlP parentLabel = (HtmlP) new HtmlP().addEscapedText(parent.getLabel());
+        parentLabel.add(caret);
 
-        navLink.add(fatherLabel);
+        navLink.add(parentLabel);
 
-        mainNode.add(navLink);
+        parentItem.add(navLink);
 
         HtmlDiv collapse = new HtmlDiv(divId);
         collapse.addClass("collapse");
-        collapse.add(getChildren(father.getMenuItems()));
+        collapse.add(getChildren(parent.getMenuItems()));
 
-        mainNode.add(collapse);
+        parentItem.add(collapse);
 
-        return mainNode;
-    }
-
-    private HtmlIcon getIcon(String iconClass) {
-        HtmlIcon iTag = new HtmlIcon();
-        iTag.addClass(iconClass);
-
-        return iTag;
+        return parentItem;
     }
 
     @Override
@@ -98,4 +88,10 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
         return nav;
     }
 
+    private HtmlIcon getIcon(String iconClass) {
+        HtmlIcon iTag = new HtmlIcon();
+        iTag.addClass(iconClass);
+
+        return iTag;
+    }
 }
