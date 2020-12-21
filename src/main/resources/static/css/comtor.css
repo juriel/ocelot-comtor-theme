@@ -173,3 +173,40 @@ table th {
     padding: 8px;
 
 }
+
+.multiple-checkboxes {
+    padding: 0 !important;
+}
+
+.multiple-checkboxes fieldset {
+    border: initial;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0 30px !important;
+    height: 300px;
+    border: 1px solid #e3e3e3;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
+.multiple-checkboxes fieldset label {
+    margin: 0;
+    font-size: 0.8rem !important;
+}
+
+.multiple-checkboxes fieldset .form-check {
+    padding: 0px;
+    margin: 2px 0;
+}
+
+.multiple-checkboxes legend {
+    display: block;
+    width: initial;
+    padding: 0 10px;
+    margin: 0rem;
+    font-size: 1.2rem;
+    line-height: inherit;
+    white-space: normal;
+    font-weight: bolder;
+    color: black;
+}
