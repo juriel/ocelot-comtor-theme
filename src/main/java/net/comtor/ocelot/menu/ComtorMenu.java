@@ -62,11 +62,11 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
     }
 
     @Override
-    public HtmlTag getChildren(List<MenuItem> childs) {
+    public HtmlTag getChildren(List<MenuItem> children) {
         HtmlUl nav = new HtmlUl();
         nav.addClass("nav");
 
-        for (MenuItem child : childs) {
+        for (MenuItem child : children) {
             HtmlLi navItem = new HtmlLi();
             navItem.addClass("nav-item").addClass("menu-item");
             navItem.addAttribute("endpoint", child.getPath());
@@ -74,8 +74,14 @@ public class ComtorMenu extends HtmlContainer implements OcelotMenu {
             HtmlA navLink = new HtmlA();
             navLink.addClass("nav-link");
 
-            HtmlSpan sidebarMini = new HtmlSpan(child.getLabel().substring(0, 1));
-            sidebarMini.addClass("sidebar-mini");
+            HtmlTag sidebarMini = null;
+            if (StringUtils.isEmpty(child.getIcon())) {
+                sidebarMini = new HtmlSpan(child.getLabel().substring(0, 1));
+                sidebarMini.addClass("sidebar-mini");
+            }
+            else{
+                sidebarMini = getIcon(child.getIcon());
+            }
 
             HtmlSpan sidebarNormal = new HtmlSpan(child.getLabel());
             sidebarNormal.addClass("sidebar-normal");
