@@ -89,6 +89,13 @@ public class ComtorCheckBox extends HtmlDiv implements LabelInputHelpError<HtmlC
     }
 
     @Override
+    public IHtmlCheckbox checked() {
+        checkbox.checked();
+
+        return this;
+    }
+
+    @Override
     public HtmlFormElement enable() {
         checkbox.enable();
 
